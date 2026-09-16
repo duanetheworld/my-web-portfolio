@@ -14,7 +14,91 @@
 
 </head>
 
+    
+<!-- =========================
+     IMAGE LIGHTBOX
+========================= -->
 
+<div id="imageModal" class="image-modal">
+
+    <span class="close-modal">&times;</span>
+
+    <img
+        id="modalImage"
+        class="modal-image"
+        src=""
+        alt="Large Image">
+
+</div>
+
+    
+<script>
+
+    // Get elements
+
+    const modal = document.getElementById("imageModal");
+
+    const modalImage = document.getElementById("modalImage");
+
+    const closeModal = document.querySelector(".close-modal");
+
+    const clickableImages =
+        document.querySelectorAll(".clickable-image");
+
+
+    // Open image
+
+    clickableImages.forEach(function(image) {
+
+        image.addEventListener("click", function() {
+
+            modal.style.display = "flex";
+
+            modalImage.src = this.src;
+
+            modalImage.alt = this.alt;
+
+        });
+
+    });
+
+
+    // Close using X
+
+    closeModal.addEventListener("click", function() {
+
+        modal.style.display = "none";
+
+    });
+
+
+    // Close by clicking outside image
+
+    modal.addEventListener("click", function(event) {
+
+        if (event.target === modal) {
+
+            modal.style.display = "none";
+
+        }
+
+    });
+
+
+    // Close using ESC key
+
+    document.addEventListener("keydown", function(event) {
+
+        if (event.key === "Escape") {
+
+            modal.style.display = "none";
+
+        }
+
+    });
+
+</script>
+    
 <body>
 
 
@@ -382,15 +466,18 @@
 
                     <img
                         src="images/project1-1.jpg"
-                        alt="Project 1 Image 1">
+                        alt="Project 1 Image 1"
+                        class="clickable-image">
 
                     <img
                         src="images/project1-2.jpg"
-                        alt="Project 1 Image 2">
+                        alt="Project 1 Image 2"
+                        class="clickable-image">
 
                     <img
                         src="images/project1-3.jpg"
-                        alt="Project 1 Image 3">
+                        alt="Project 1 Image 3"
+                        class="clickable-image">
 
                 </div>
 
@@ -438,15 +525,18 @@
 
                     <img
                         src="images/project2-1.jpg"
-                        alt="Project 2 Image 1">
+                        alt="Project 2 Image 1"
+                        class="clickable-image">
 
                     <img
                         src="images/project2-2.jpg"
-                        alt="Project 2 Image 2">
+                        alt="Project 2 Image 2"
+                        class="clickable-image">
 
                     <img
                         src="images/project2-3.jpg"
-                        alt="Project 2 Image 3">
+                        alt="Project 2 Image 3"
+                        class="clickable-image">
 
                 </div>
 
@@ -493,15 +583,18 @@
 
                     <img
                         src="images/project3-1.jpg"
-                        alt="Project 3 Image 1">
+                        alt="Project 3 Image 1"
+                        class="clickable-image">
 
                     <img
                         src="images/project3-2.jpg"
-                        alt="Project 3 Image 2">
+                        alt="Project 3 Image 2"
+                        class="clickable-image">
 
                     <img
                         src="images/project3-3.jpg"
-                        alt="Project 3 Image 3">
+                        alt="Project 3 Image 3"
+                        class="clickable-image">
 
                 </div>
 
@@ -555,15 +648,18 @@
 
                     <img
                         src="images/project4-1.jpg"
-                        alt="Project 4 Image 1">
+                        alt="Project 4 Image 1"
+                        class="clickable-image">
 
                     <img
                         src="images/project4-2.jpg"
-                        alt="Project 4 Image 2">
+                        alt="Project 4 Image 2"
+                        class="clickable-image">
 
                     <img
                         src="images/project4-3.jpg"
-                        alt="Project 4 Image 3">
+                        alt="Project 4 Image 3"
+                        class="clickable-image">
 
                 </div>
 
@@ -617,15 +713,18 @@
 
                     <img
                         src="images/project5-1.jpg"
-                        alt="Project 5 Image 1">
+                        alt="Project 5 Image 1"
+                        class="clickable-image">
 
                     <img
                         src="images/project5-2.jpg"
-                        alt="Project 5 Image 2">
+                        alt="Project 5 Image 2"
+                        class="clickable-image">
 
                     <img
                         src="images/project5-3.jpg"
-                        alt="Project 5 Image 3">
+                        alt="Project 5 Image 3"
+                        class="clickable-image">
 
                 </div>
 
@@ -672,7 +771,8 @@
 
                 <img
                     src="images/cert1.jpg"
-                    alt="Certificate 1">
+                    alt="Certificate 1"
+                    class="clickable-image">
 
                 <h3>
                     CompTIA Tech+ Certificate
@@ -699,7 +799,8 @@
 
                 <img
                     src="images/cert2.jpg"
-                    alt="Certificate 2">
+                    alt="Certificate 2"
+                    class="clickable-image">
 
                 <h3>
                     Google Cloud Computing Foundations Certificate
@@ -723,7 +824,8 @@
 
                 <img
                     src="images/cert3.jpg"
-                    alt="Certificate 3">
+                    alt="Certificate 3"
+                    class="clickable-image">
 
                 <h3>
                     Python Course Certificate
@@ -743,7 +845,8 @@
 
                 <img
                     src="images/cert4.jpg"
-                    alt="Certificate 4">
+                    alt="Certificate 4"
+                    class="clickable-image">
 
                 <h3>
                     QGIS Workshop: Introduction to GIS Mapping
@@ -763,7 +866,8 @@
 
                 <img
                     src="images/cert5.jpg"
-                    alt="Certificate 5">
+                    alt="Certificate 5"
+                    class="clickable-image">
 
                 <h3>
                     CyberSmart Pilipinas: Strengthening Cybersecurity and Digital Safety in the Modern Age
@@ -783,7 +887,8 @@
 
                 <img
                     src="images/cert6.jpg"
-                    alt="Certificate 6">
+                    alt="Certificate 6"
+                    class="clickable-image">
 
                 <h3>
                     CCNA: Introduction to Networks 
@@ -807,7 +912,8 @@
 
                 <img
                     src="images/cert7.jpg"
-                    alt="Certificate 7">
+                    alt="Certificate 7"
+                    class="clickable-image">
 
                 <h3>
                     CCNA: Switching, Routing, and Wireless Essentials
@@ -831,7 +937,8 @@
 
                 <img
                     src="images/cert8.jpg"
-                    alt="Certificate 8">
+                    alt="Certificate 8"
+                    class="clickable-image">
 
                 <h3>
                     Ethical Hacking
@@ -855,7 +962,8 @@
 
                 <img
                     src="images/cert9.jpg"
-                    alt="Certificate 9">
+                    alt="Certificate 9"
+                    class="clickable-image">
 
                 <h3>
                     Hardware and Upgrade Support
@@ -879,7 +987,8 @@
 
                 <img
                     src="images/cert10.jpg"
-                    alt="Certificate 10">
+                    alt="Certificate 10"
+                    class="clickable-image">
 
                 <h3>
                     Digital Safety and Security Awareness
@@ -903,7 +1012,8 @@
 
                 <img
                     src="images/cert11.jpg"
-                    alt="Certificate 11">
+                    alt="Certificate 11"
+                    class="clickable-image">
 
                 <h3>
                     Foundations of Project Management
@@ -927,7 +1037,8 @@
 
                 <img
                     src="images/cert12.jpg"
-                    alt="Certificate 12">
+                    alt="Certificate 12"
+                    class="clickable-image">
 
                 <h3>
                     Full Stack Web Development
@@ -951,7 +1062,8 @@
 
                 <img
                     src="images/cert13.jpg"
-                    alt="Certificate 13">
+                    alt="Certificate 13"
+                    class="clickable-image">
 
                 <h3>
                     Technical Support Fundamentals
@@ -975,7 +1087,8 @@
 
                 <img
                     src="images/cert14.jpg"
-                    alt="Certificate 14">
+                    alt="Certificate 14"
+                    class="clickable-image">
 
                 <h3>
                     The Bits and Bytes of Computer Networking
@@ -1054,10 +1167,10 @@
                 </h3>
 
                 <p>
+                    
                     Completed 486 hours of practicum under the Digital Client Service Department of Ecolab Philippines, Inc., 
                     gaining hands-on experience in IT operations, technical support, asset management, and procurement. 
                     Key responsibilities included:
-                    <br>
 
                 </p>
 
