@@ -242,6 +242,37 @@ img {
     color: #b8dfff;
 }
 
+.home-name {
+    background: linear-gradient(
+        90deg,
+        #ffffff,
+        #008cff,
+        #ffffff,
+        #0066ff
+    );
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    animation: nameColor 5s ease-in-out infinite;
+}
+
+@keyframes nameColor {
+    0% {
+        background-position: 0% center;
+    }
+
+    50% {
+        background-position: 100% center;
+    }
+
+    100% {
+        background-position: 0% center;
+    }
+}
+
 
 /* =========================================================
    BUTTONS
