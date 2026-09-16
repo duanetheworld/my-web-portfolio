@@ -13,91 +13,6 @@
     <link rel="stylesheet" href="style.css">
 
 </head>
-
-    
-<!-- =========================
-     IMAGE LIGHTBOX
-========================= -->
-
-<div id="imageModal" class="image-modal">
-
-    <span class="close-modal">&times;</span>
-
-    <img
-        id="modalImage"
-        class="modal-image"
-        src=""
-        alt="Large Image">
-
-</div>
-
-    
-<script>
-
-    // Get elements
-
-    const modal = document.getElementById("imageModal");
-
-    const modalImage = document.getElementById("modalImage");
-
-    const closeModal = document.querySelector(".close-modal");
-
-    const clickableImages =
-        document.querySelectorAll(".clickable-image");
-
-
-    // Open image
-
-    clickableImages.forEach(function(image) {
-
-        image.addEventListener("click", function() {
-
-            modal.style.display = "flex";
-
-            modalImage.src = this.src;
-
-            modalImage.alt = this.alt;
-
-        });
-
-    });
-
-
-    // Close using X
-
-    closeModal.addEventListener("click", function() {
-
-        modal.style.display = "none";
-
-    });
-
-
-    // Close by clicking outside image
-
-    modal.addEventListener("click", function(event) {
-
-        if (event.target === modal) {
-
-            modal.style.display = "none";
-
-        }
-
-    });
-
-
-    // Close using ESC key
-
-    document.addEventListener("keydown", function(event) {
-
-        if (event.key === "Escape") {
-
-            modal.style.display = "none";
-
-        }
-
-    });
-
-</script>
     
 <body>
 
@@ -1287,7 +1202,152 @@
 
 </section>
 
+<!-- =========================
+     IMAGE LIGHTBOX
+========================= -->
 
+<div id="imageModal" class="image-modal">
+    <button class="prev-btn" id="prevBtn">← Previous</button>
+
+    <img id="modalImage" class="modal-image" src="" alt="Large Image">
+
+    <button class="next-btn" id="nextBtn">Next →</button>
+
+    <span class="close-modal" id="closeModal">&times;</span>
+</div>
+
+    
+<script>
+const modal = document.getElementById("imageModal");
+const modalImage = document.getElementById("modalImage");
+const closeModal = document.getElementById("closeModal");
+const prevBtn = document.getElementById("prevBtn");
+const nextBtn = document.getElementById("nextBtn");
+
+const clickableImages = Array.from(
+    document.querySelectorAll(".clickable-image")
+);
+
+let currentImageIndex = 0;
+
+
+// Open Image Viewer
+clickableImages.forEach(function(image, index) {
+
+    image.addEventListener("click", function() {
+
+        currentImageIndex = index;
+
+        modal.style.display = "flex";
+
+        showImage(currentImageIndex);
+    });
+
+});
+
+
+// Display Selected Image
+function showImage(index) {
+
+    if (clickableImages.length === 0) {
+        return;
+    }
+
+    modalImage.src = clickableImages[index].src;
+    modalImage.alt = clickableImages[index].alt;
+
+}
+
+
+// Previous Button
+prevBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    currentImageIndex--;
+
+    if (currentImageIndex < 0) {
+        currentImageIndex = clickableImages.length - 1;
+    }
+
+    showImage(currentImageIndex);
+
+});
+
+
+// Next Button
+nextBtn.addEventListener("click", function(event) {
+
+    event.stopPropagation();
+
+    currentImageIndex++;
+
+    if (currentImageIndex >= clickableImages.length) {
+        currentImageIndex = 0;
+    }
+
+    showImage(currentImageIndex);
+
+});
+
+
+// Close Button
+closeModal.addEventListener("click", function() {
+
+    modal.style.display = "none";
+
+});
+
+
+// Close when clicking outside the image
+modal.addEventListener("click", function(event) {
+
+    if (event.target === modal) {
+        modal.style.display = "none";
+    }
+
+});
+
+
+// Keyboard Controls
+document.addEventListener("keydown", function(event) {
+
+    if (modal.style.display !== "flex") {
+        return;
+    }
+
+    if (event.key === "Escape") {
+
+        modal.style.display = "none";
+
+    }
+
+    if (event.key === "ArrowLeft") {
+
+        currentImageIndex--;
+
+        if (currentImageIndex < 0) {
+            currentImageIndex = clickableImages.length - 1;
+        }
+
+        showImage(currentImageIndex);
+
+    }
+
+    if (event.key === "ArrowRight") {
+
+        currentImageIndex++;
+
+        if (currentImageIndex >= clickableImages.length) {
+            currentImageIndex = 0;
+        }
+
+        showImage(currentImageIndex);
+
+    }
+
+});
+</script>
 
 <!-- =========================
      FOOTER
@@ -1296,7 +1356,7 @@
 <footer>
 
     <p>
-        © 2026 Your Name. All Rights Reserved.
+        © 2026 Duane Jancis Bacayon. All Rights Reserved.
     </p>
 
 </footer>
