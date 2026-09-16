@@ -186,7 +186,7 @@ img {
     height: 250px;
     object-fit: cover;
     image-rendering: pixelated;
-    border: 4px solid #07142b;
+    border: 4px solid #1683ff;
     cursor: pointer;
     transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
@@ -210,8 +210,9 @@ img {
 
 .home-text h1 {
     font-family: 'Press Start 2P', monospace;
-    font-size: clamp(24px, 4vw, 42px);
-    line-height: 1.5;
+    font-size: clamp(20px, 3.2vw, 38px);
+    line-height: 1.3;
+    white-space: nowrap;
     text-shadow: 4px 4px 0 #063b73;
 }
 
@@ -238,9 +239,10 @@ img {
 
 .short-description {
     max-width: 650px;
-    margin: 20px auto;
+    margin: 20px 0;
     font-size: 22px;
     color: #b8dfff;
+    text-align: left;
 }
 
 /* =========================================================
@@ -409,6 +411,7 @@ img {
     font-size: 23px;
 
     color: #c5e4ff;
+    text-align: center;
 }
 
 .about-content {
@@ -708,6 +711,11 @@ img {
 }
 
 
+.company-logo-container a {
+    display: inline-block;
+    line-height: 0;
+}
+
 .company-logo {
     max-width: 250px;
     max-height: 120px;
@@ -964,7 +972,7 @@ footer {
         gap: 15px;
     }
 
-    .home-content {
+   .home-content {
         flex-direction: column;
 
         text-align: center;
@@ -1010,7 +1018,8 @@ footer {
     }
 
     .home-text h1 {
-        font-size: 20px;
+        font-size: clamp(16px, 5vw, 24px);
+        white-space: nowrap;
     }
 
     .home-text h2 {
