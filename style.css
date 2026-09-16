@@ -93,11 +93,11 @@ img {
 
     padding: 18px 7%;
 
-    background: 07142b;
-    border-bottom: 3px solid 1683ff;
+    background: #07142b;
+    border-bottom: 3px solid #1683ff;
 
     box-shadow:
-        0 4px 0 031020,
+        0 4px 0 #031020,
         0 0 20px rgba(0, 119, 255, 0.25);
 }
 
@@ -108,10 +108,10 @@ img {
     font-family: 'Press Start 2P', monospace;
     font-size: 14px;
 
-    color: 5bbcff;
+    color: #5bbcff;
 
     text-shadow:
-        3px 3px 0 063b73;
+        3px 3px 0 #063b73;
 
     white-space: nowrap;
 }
@@ -125,7 +125,7 @@ img {
 
 .nav-links a {
     font-size: 18px;
-    color: b8dfff;
+    color: #b8dfff;
 
     padding: 8px 5px;
 
@@ -147,7 +147,11 @@ img {
 
 .home {
     position: relative;
-
+    min-height: calc(100vh - 75px);
+    padding: 70px 7%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     background-image: url("images/home-background.gif");
     background-size: cover;
     background-position: center;
@@ -156,64 +160,48 @@ img {
 
 .home::before {
     content: "";
-
     position: absolute;
     inset: 0;
-
     background: rgba(3, 10, 30, 0.65);
-
     z-index: 0;
 }
 
-.home > * {
+.home-content {
     position: relative;
     z-index: 1;
-}
-
-
-.home-content {
-    max-width: 1100px;
-
-    width: 100%;
-
+    width: min(1100px, 100%);
     display: flex;
     align-items: center;
     justify-content: center;
-
-    gap: 80px;
+    gap: 60px;
+    text-align: center;
 }
-
-
-/* Profile */
 
 .profile-container {
-    position: relative;
-
-    padding: 8px;
-
-    background: #0b2850;
-
-    border: 4px solid #1683ff;
-
-    box-shadow:
-        8px 8px 0 #031020,
-        0 0 25px rgba(0, 132, 255, 0.35);
+    flex-shrink: 0;
 }
-
 
 .profile-image {
     width: 250px;
     height: 250px;
-
     object-fit: cover;
-
     image-rendering: pixelated;
-
     border: 4px solid #07142b;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
 }
 
+.profile-image:hover {
+    transform: translateY(-5px) scale(1.03);
+    border-color: #4db8ff;
+    box-shadow: 0 0 25px rgba(0, 132, 255, 0.55);
+}
 
-/* Home Text */
+.home-text {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
 
 .greeting {
     color: #4db8ff;
@@ -222,66 +210,38 @@ img {
 
 .home-text h1 {
     font-family: 'Press Start 2P', monospace;
-
     font-size: clamp(24px, 4vw, 42px);
-
     line-height: 1.5;
+    text-shadow: 4px 4px 0 #063b73;
+}
 
-    color: #ffffff;
+.home-name {
+    background: linear-gradient(90deg, #ffffff, #168cff, #ffffff, #0066ff);
+    background-size: 300% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: transparent;
+    animation: nameColor 5s ease-in-out infinite;
+}
 
-    text-shadow:
-        4px 4px 0 #063b73;
+@keyframes nameColor {
+    0%, 100% { background-position: 0% center; }
+    50% { background-position: 100% center; }
 }
 
 .home-text h2 {
     margin-top: 10px;
-
     font-size: 28px;
-
     color: #4dafff;
 }
 
 .short-description {
     max-width: 650px;
-
-    margin: 20px 0;
-
+    margin: 20px auto;
     font-size: 22px;
-
     color: #b8dfff;
 }
-
-.home-name {
-    background: linear-gradient(
-        90deg,
-        #ffffff,
-        #008cff,
-        #ffffff,
-        #0066ff
-    );
-
-    background-size: 300% auto;
-
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-
-    animation: nameColor 5s ease-in-out infinite;
-}
-
-@keyframes nameColor {
-    0% {
-        background-position: 0% center;
-    }
-
-    50% {
-        background-position: 100% center;
-    }
-
-    100% {
-        background-position: 0% center;
-    }
-}
-
 
 /* =========================================================
    BUTTONS
@@ -323,39 +283,31 @@ img {
 
 .view-button {
     display: inline-block;
-    padding: 10px 18px;
-
+    margin-top: 5px;
+    padding: 7px 12px;
     background: #0a2a5e;
     color: #ffffff;
-
     border: 2px solid #168cff;
-    text-decoration: none;
-
-    font-family: "VT323", monospace;
-    font-size: 18px;
+    font-family: 'VT323', monospace;
+    font-size: 16px;
     font-weight: bold;
-
+    line-height: 1;
+    text-decoration: none;
     cursor: pointer;
-
-    box-shadow: 4px 4px 0 #03132e;
-
-    transition: all 0.2s ease;
+    box-shadow: 3px 3px 0 #03132e;
+    transition: transform 0.2s ease, background 0.2s ease, box-shadow 0.2s ease;
 }
 
 .view-button:hover {
     background: #168cff;
-    color: #ffffff;
-
-    transform: translate(-2px, -2px);
-
-    box-shadow: 6px 6px 0 #03132e;
+    transform: translate(-1px, -1px);
+    box-shadow: 4px 4px 0 #03132e;
 }
 
 .view-button:active {
-    transform: translate(2px, 2px);
+    transform: translate(1px, 1px);
     box-shadow: 2px 2px 0 #03132e;
 }
-
 
 /* =========================================================
    CONTACTS
@@ -457,6 +409,16 @@ img {
     font-size: 23px;
 
     color: #c5e4ff;
+}
+
+.about-content {
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.about-content:hover {
+    transform: translateY(-4px);
+    border-color: #1683ff;
+    box-shadow: 8px 8px 0 #031020, 0 0 25px rgba(0, 132, 255, 0.28);
 }
 
 
@@ -680,62 +642,45 @@ img {
 
 .cert-card img {
     width: 100%;
-
-    height: 220px;
-
-    object-fit: contain;
-
-    background: #030b18;
-
-    border: 2px solid #124f91;
-
-    margin-bottom: 20px;
-
-    cursor: pointer;
+    height: 100%;
+    object-fit: cover;
+    display: block;
 }
 
+.certificate-image {
+    width: 100%;
+    height: 220px;
+    margin-bottom: 20px;
+    overflow: hidden;
+    border: 3px solid #124f91;
+    border-radius: 6px;
+    background: #ffffff;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.certificate-image:hover {
+    transform: scale(1.02);
+    border-color: #4db8ff;
+    box-shadow: 0 0 18px rgba(0, 132, 255, 0.45);
+}
 
 .cert-card h3 {
     font-family: 'Press Start 2P', monospace;
-
     font-size: 11px;
-
     line-height: 1.8;
-
     color: #ffffff;
-
     margin-bottom: 10px;
 }
 
-
 .cert-card p {
     font-size: 18px;
-
     color: #65c5ff;
-
-    margin-bottom: 15px;
+    margin-bottom: 12px;
 }
 
-
-.cert-card a {
-    color: #4db8ff;
-
-    font-size: 18px;
-}
-
-.cert-card a:hover {
-    color: #ffffff;
-
-    text-shadow:
-        0 0 8px #1683ff;
-}
-
-.certificate-image img {
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-    display: block;
-    background: #ffffff;
+.cert-card .view-button {
+    font-size: 16px;
 }
 
 /* =========================================================
@@ -765,18 +710,20 @@ img {
 
 .company-logo {
     max-width: 250px;
-
     max-height: 120px;
-
     object-fit: contain;
-
     background: #ffffff;
-
     padding: 15px;
-
     border: 3px solid #1683ff;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
 }
 
+.company-logo:hover {
+    transform: scale(1.04);
+    border-color: #4db8ff;
+    box-shadow: 0 0 22px rgba(0, 132, 255, 0.5);
+}
 
 .practicum-content h3 {
     font-family: 'Press Start 2P', monospace;
