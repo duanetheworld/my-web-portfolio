@@ -242,7 +242,7 @@ img {
     margin: 20px 0;
     font-size: 22px;
     color: #b8dfff;
-    text-align: left;
+    text-align: center;
 }
 
 /* =========================================================
@@ -411,7 +411,7 @@ img {
     font-size: 23px;
 
     color: #c5e4ff;
-    text-align: center;
+    text-align: left;
 }
 
 .about-content {
